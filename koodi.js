@@ -28,7 +28,7 @@ let building = {
 
 function scoreboard() {
     ctx.fillStyle = "grey";
-    ctx.fillRect(50, 50, 200, 120);
+    ctx.fillRect(50, 50, 400, 200);
 
     ctx.fillStyle = "black";
     ctx.font = "40px Arial";
@@ -37,7 +37,7 @@ function scoreboard() {
 }
 
 function build(Blueprint) {
-    
+
 }
 
 function floor() {
