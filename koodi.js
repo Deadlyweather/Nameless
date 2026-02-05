@@ -36,13 +36,15 @@ function scoreboard() {
     ctx.fillText("Floor: " + scores.floor, 50, 150);
 }
 
-function build(Blueprint) {
+let grid = 16
 
+function floor(Blueprint) {
+    
 }
 
-function floor() {
+function milestones() {
     if (scores.floor === 0) {
-        build(blueprints.bottom);
+        floor(blueprints.bottom);
     }
 }
 
@@ -55,4 +57,29 @@ function gameloop() {
     requestAnimationFrame(gameloop);
 }
 
-gameloop();
+function loadingScreen() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.font = "50px Arial";
+    ctx.fillText("downloading images", canvas.width / 2 - 100, canvas.height / 2);
+    for (let key in images) {
+        let img = new Image();
+        img.src = images[key];
+        images[key] = img;
+    }
+   
+    setTimeout(() => {
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "50px Arial";
+        ctx.fillText("done", canvas.width / 2 - 100, canvas.height / 2);
+    }, 500);
+    setTimeout(() => {
+        gameloop()
+    }, 1000);
+}
+
+loadingScreen();
